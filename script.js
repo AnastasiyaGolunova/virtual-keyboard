@@ -47,7 +47,6 @@ function searchInKeyboard(code) {
 
 document.addEventListener('keydown', function (event) {
     textarea.innerHTML = event.key;
-    console.log(event.key);
     if (btn.event === 'backspace' || btn.event === 'tab' || btn.event === 'caps lock' || btn.event === 'shift' || btn.event === '' || btn.event === 'enter') {
         let textarea = textarea.value;
         if (event.key === 'Backspace') {
@@ -55,11 +54,9 @@ document.addEventListener('keydown', function (event) {
         }
         if (event.key === 'Tab') {
             document.querySelector('.textarea').textContent += "    ";
-            console.log('true');
         }
         if (btn.event === 'Enter') {
             document.querySelector('.textarea').textContent += "/n";
-            console.log('true');
         }
         if (btn.event === '') {
             document.querySelector('.textarea').textContent += " ";
@@ -72,29 +69,12 @@ document.addEventListener('keydown', function (event) {
     }
 })
 
-// onclick
-// function keysToUpperOrLowerCase() {
-//     if (keyEn.matches("A-Z")) {
-//         for (let i = 0; i < keyEn.length; i++) {
-//             keyEn[i] = keyEn[i].toLowerCase();
-//             console.log(keyEn[i]);
-//         }
-//     } else {
-//         for (let i = 0; i < keyEn.length; i++) {
-//             keyEn[i] = keyEn[i].toUpperCase();
-//             console.log(keyEn[i]);
-//         }
-//     }
-// }
-
-
 document.querySelectorAll('.button').forEach((element) => {
     element.onclick = function (event) {
         document.querySelectorAll('.button').forEach(function (element) {
             element.classList.remove('active');
         });
         let code = this.getAttribute('key');
-        console.log(code);
         this.classList.add("active");
         setTimeout(() => this.classList.remove("active"), 300);
         let keys = searchInKeyboard(code);
@@ -105,7 +85,6 @@ document.querySelectorAll('.button').forEach((element) => {
             document.querySelector('.textarea').textContent += "    ";
         } else if (code === "caps lock") {
             document.querySelector('.textarea').textContent += searchInKeyboard(code).toUpperCase();
-            console.log(event.code);
         } else if (code === "ctrl" ||
             code === "shift" ||
             code === "alt") {
